@@ -29,7 +29,7 @@ class ActionSearchRestaurants(Action):
 
     def run(self, dispatcher, tracker, domain):
         #Key to connect to Zomato API
-        config={ "user_key":"7d7daf5267b7688cb1d46dda9fd0e633"}
+        config={ "user_key":"******"}
         zomato = zomatopy.initialize_app(config)
         loc = tracker.get_slot('location')
 
@@ -207,7 +207,7 @@ class ActionSendEmail(Action):
         #Open SMTP connection to Foodie's email id.
         s = smtplib.SMTP("smtp.gmail.com", 587)
         s.starttls()
-        s.login("mfoodiechat@gmail.com", "mfoodie123")
+        s.login("******@gmail.com", "**********")
 
         #Create the msg object
         msg = EmailMessage()
@@ -233,7 +233,7 @@ class ActionSendEmail(Action):
 def retrieve_restaurant(lat, lon, cuisines_dict, cuisine, res_key, r_rest):
     base_url = "https://developers.zomato.com/api/v2.1/"
     headers = {'Accept': 'application/json',
-                'user-key': '7d7daf5267b7688cb1d46dda9fd0e633'}
+                'user-key': '**********'}
     try:
         results = (requests.get(base_url + "search?" + "&lat=" + str(lat) + "&lon=" + str(lon) + "&cuisines=" + str(
             cuisines_dict.get(cuisine)) + "&start=" + str(res_key)+"&count=20", headers=headers).content).decode("utf-8")
