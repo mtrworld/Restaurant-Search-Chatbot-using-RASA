@@ -214,7 +214,7 @@ class ActionSendEmail(Action):
 
         #Fill in the message properties
         msg['Subject'] = r_email_subj
-        msg['From'] = "mfoodiechat@gmail.com"
+        msg['From'] = "*********@gmail.com"
 
         #Fill in the message content
         msg.set_content(r_email_msg)
