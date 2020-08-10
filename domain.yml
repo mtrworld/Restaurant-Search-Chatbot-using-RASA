@@ -1,0 +1,126 @@
+actions:
+- action_restarted
+- action_search_restaurants
+- action_send_email
+- action_verify_email
+- action_verify_location
+- utter_ask_budget
+- utter_ask_cuisine
+- utter_ask_email
+- utter_ask_emailid
+- utter_ask_howcanhelp
+- utter_ask_location
+- utter_default
+- utter_goodbye
+- utter_greet
+- utter_restart
+entities:
+- budgetmax
+- budgetmin
+- cuisine
+- deny
+- dont_send_email
+- dot_send_email
+- emailid
+- greet
+- location
+- people
+- price
+- send_email
+- send_mail
+intents:
+- restaurant_search
+- greet
+- send_mail
+- deny
+- goodbye
+- dont_send_email
+- affirm
+- stop
+session_config:
+  carry_over_slots_to_new_session: true
+  session_expiration_time: 0
+slots:
+  budgetmax:
+    max_value: 1.0
+    min_value: 0.0
+    type: float
+  budgetmin:
+    max_value: 1.0
+    min_value: 0.0
+    type: float
+  cuisine:
+    type: text
+  email_ok:
+    initial_value: false
+    type: bool
+  emailid:
+    type: text
+  location:
+    type: text
+  location_ok:
+    initial_value: false
+    type: bool
+  restaurant_exist:
+    initial_value: false
+    type: bool
+templates:
+  utter_ask_budget:
+  - buttons:
+    - payload: /restaurant_search{"budgetmin":"0","budgetmax":"300"}
+      title: Less than Rs. 300
+    - payload: /restaurant_search{"budgetmin":"300","budgetmax":"700"}
+      title: Rs. 300 to 700
+    - payload: /restaurant_search{"budgetmin":"700","budgetmax":"10000"}
+      title: More than 700
+    text: What is the average budget for two people?
+  utter_ask_cuisine:
+  - buttons:
+    - payload: Chinese
+      title: Chinese
+    - payload: Mexican
+      title: Mexican
+    - payload: Italian
+      title: Italian
+    - payload: American
+      title: American
+    - payload: South Indian
+      title: South Indian
+    - payload: North Indian
+      title: North India
+    text: What would you like to eat?[Chinese, Mexican, Italian or something Indian?]
+  utter_ask_email:
+  - buttons:
+    - payload: /send_mail
+      title: Yes
+    - payload: /dont_send_email
+      title: No
+    text: Should I send you details of all restaurants to your email?
+  utter_ask_emailid:
+  - text: Please, enter your email id.
+  - text: Ok great, please enter your email id.
+  - text: For sure. Can you let me know you email id?
+  utter_ask_howcanhelp:
+  - text: Do you need any more help?
+  - text: That's great. How can I help you more?
+  - text: Superb!! Anything else I can do for you? Foodie is always at your service.
+  utter_ask_location:
+  - text: What location would you prefer?
+  - text: Any particular location in your mind?
+  - text: That's great any preferred location?
+  utter_default:
+  - text: I cannot understand
+  utter_goodbye:
+  - text: Happy to help always. See you next time
+  - text: Hope you are satified with my service. Hope to see you soon. Good bye!!
+      Have a nice day!!
+  - text: Happy Fooding. Take care until next time. Bye-Bye
+  utter_greet:
+  - text: Hey there! This is Foodie. Your personal Restaurant Search Assistant. How
+      may i help you
+  - text: Hi, Foodie Here!! How can I help you!
+  - text: Hey, you are talking to Foodie, your personal Restaurant Searcher!! How
+      is it going. How May I help you Today?
+  - text: Hola Amigo!! Hungry? What's on you mind today?
+  utter_restart:
+  - text: What can I help you with now?
